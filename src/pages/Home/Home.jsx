@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Home.css"
+import { CoinContext } from '../../context/CoinContext'
 
 const Home = () => {
 
-    const [coins, setCoins] = useState([])
-
-    const fetchData = () => {
-        const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr';
-        const options = {
-            method: 'GET',
-            headers: { accept: 'application/json', 'x-cg-demo-api-key': 'CG-EeGCqbYnsNBT4sVXmF1thEBs' }
-        };
-
-        fetch(url, options)
-            .then(res => res.json())
-            .then(json => setCoins(json))
-            .catch(err => console.error('error:' + err));
-    }
-
-    useEffect(()=>{
-        fetchData()
-    },[])
+   const coins =  useContext(CoinContext)
    
     return (
         <div className='home'>
