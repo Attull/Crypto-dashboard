@@ -4,7 +4,9 @@ import { CoinContext } from '../../context/CoinContext'
 
 const Home = () => {
 
-   const coins =  useContext(CoinContext)
+   const {coins , currency} =  useContext(CoinContext)
+
+   console.log(currency)
    
     return (
         <div className='home'>
@@ -31,7 +33,7 @@ const Home = () => {
                                 <tr>
                                     <td>{coin.name}</td>
                                     <td><img src={coin.image} height="100"/></td>
-                                    <td>{coin.current_price.toFixed(2)}</td>
+                                    <td>{currency.symbol + coin.current_price.toFixed(2)}</td>
                                     <td>{coin.price_change_24h}</td>
                                     <td>{coin.market_cap}</td>
                                 </tr>
