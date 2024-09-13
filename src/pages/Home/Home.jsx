@@ -5,16 +5,37 @@ import { CoinContext } from '../../context/CoinContext'
 const Home = () => {
 
    const {coins , currency} =  useContext(CoinContext)
+   const [input, setInput] = useState("")
+    const [displayCoin, setDisplayCoin] =  useState([])
 
-   console.log(currency)
-   
+   const inputHandler = (val) =>{
+       setInput(val)
+       if(val == ""){
+        setDisplayCoin(coins)
+       }
+   }
+
+   const searchHandler = (e)=>{
+        e.preventDefault()
+        const filterCoins = coins.filter((item) =>{
+            return item.name.toUpperCase().includes(input.toUpperCase())
+        })
+
+        setDisplayCoin(filterCoins)
+
+   }
+
+   useEffect(()=>{
+        setDisplayCoin(coins)
+   },[coins])
+
     return (
         <div className='home'>
             <div className="hero">
                 <h1>Largest <br /> Crypto Marketplace</h1>
                 <p>Welcome to the world's largest cryptocurrency marketplace. Sign up to explore more about cryptos.</p>
-                <form>
-                    <input type='text' placeholder='Search crypto...' />
+                <form onSubmit={(e)=> searchHandler(e)}>
+                    <input type='text' placeholder='Search crypto...' onChange={(e)=> inputHandler(e.target.value)}/>
                     <button type='submit'>Search</button>
                 </form>
             </div>
@@ -28,7 +49,7 @@ const Home = () => {
                         <th>Market Cap</th>
                     </tr>
                     {
-                        coins.map((coin)=>{
+                        displayCoin.map((coin)=>{
                             return (
                                 <tr>
                                     <td>{coin.name}</td>
