@@ -1,0 +1,16 @@
+.coin-parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.coin-row{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+    line-height: 35px;
+    width: 50%;
+}

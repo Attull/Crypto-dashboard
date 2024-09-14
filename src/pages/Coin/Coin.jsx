@@ -27,10 +27,31 @@ const Coin = () => {
 
   useEffect(()=>{
       fetchData()
-  },[])
+  },[currency])
 
   return (
-    <div>{coin[0]?.name}</div>
+    <div className='coin-parent'>
+       <div className='coin-row'>
+          <p>Crypto Market Rank</p>
+          <p>{coin[0]?.market_cap_rank}</p>
+       </div>
+       <div className='coin-row'>
+          <p>Current Price</p>
+          <p>{currency.symbol + coin[0]?.current_price}</p>
+       </div>
+       <div className='coin-row'>
+          <p>Market cap</p>
+          <p>{currency.symbol + coin[0]?.market_cap}</p>
+       </div>
+       <div className='coin-row'>
+          <p>24 Hour high</p>
+          <p>{currency.symbol + coin[0]?.high_24h}</p>
+       </div>
+       <div className='coin-row'>
+          <p>24 Hour low</p>
+          <p>{currency.symbol + coin[0]?.low_24h}</p>
+       </div>
+    </div>
   )
 }
 
