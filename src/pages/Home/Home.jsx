@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Home.css"
 import { CoinContext } from '../../context/CoinContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
 
    const {coins , currency} =  useContext(CoinContext)
    const [input, setInput] = useState("")
     const [displayCoin, setDisplayCoin] =  useState([])
+    const navigate = useNavigate()
 
    const inputHandler = (val) =>{
        setInput(val)
@@ -52,15 +53,14 @@ const Home = () => {
                     {
                         displayCoin.map((coin)=>{
                             return (
-                                <Link to={`coin/${coin.id}`}>
-                                  <tr>
+                                  <tr onClick={()=>navigate(`coin/${coin.id}`)}>
                                     <td>{coin.name}</td>
                                     <td><img src={coin.image} height="100"/></td>
                                     <td>{currency.symbol + coin.current_price.toFixed(2)}</td>
                                     <td>{coin.price_change_24h}</td>
                                     <td>{coin.market_cap}</td>
                                 </tr>
-                                </Link>
+
                               
                             )
                         })

@@ -69,3 +69,7 @@ th{
 th, td{
     max-width: 200px;
 }
+
+tr{
+    cursor: pointer;
+}
