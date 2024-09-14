@@ -1,0 +1,48 @@
+.history-coin-parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.history-coin {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+
+}
+
+.date-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.coin-info {
+    text-align: center;
+}
+
+.coin-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.coin-price {
+    font-size: 20px;
+    color: #4CAF50; /* Green color for price */
+}
+
+.no-data {
+    font-size: 20px;
+    color: #FF5722; /* Red color for no data */
+}

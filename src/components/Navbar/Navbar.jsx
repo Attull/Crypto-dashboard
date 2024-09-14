@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import "./Navbar.css"
 import logo from "../../assets/cryptocurrency.png"
 import { CoinContext } from '../../context/CoinContext'
+import { useNavigate } from 'react-router'
 
 const Navbar = () => {
 
   const {setCurrency} = useContext(CoinContext)
+  const navigate =  useNavigate()
 
   const currencyHandler = (val)=>{
       switch(val){
@@ -27,11 +29,11 @@ const Navbar = () => {
   }
   return (
     <div className='navbar'>
-        <img src={logo} alt="" height={40} />
+        <img  style={{cursor:"pointer"}} src={logo} alt="" height={40} onClick={()=> navigate("/")}/>
         <ul>
-            <li>Home</li>
+            <li onClick={()=> navigate("/")}>Home</li>
             <li>Features</li>
-            <li>Pricing</li>
+            <li onClick={()=> navigate("/histroy")}>Historical Data</li>
             <li>Blog</li>
         </ul>
         <div className="nav-right">
